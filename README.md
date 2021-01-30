@@ -6,17 +6,25 @@
 
 | Column    | Type   | Options     |
 | --------  | ------ | ----------- |
-| name      | string | NOT NULL    |
+| last_name | string | NOT NULL    |
+| last_name |  string | NOT NULL   |
+| last_name kana | string | NOT NULL   |
+| last_name kana|  string | NOT NULL   |
+
+
+
+
+
 | nickname  |  string | NOT NULL   |
 | email     | string  | NOT NULL   |
-| date      | string | NOT NULL    |
+| date      | date | NOT NULL    |
 | encrypted_password  | string  | NOT NULL   | 
 
 ###   Association
 
-- has_many    :Product information
-- belongs_to  :buy
-- belongs_to  :Street address
+- has_many   :Product information
+- has_may    :buy
+- has_one    :Street address
 
 
 
@@ -28,7 +36,6 @@
 | Seller   | string | NOT NULL    |
 | integer  | string | NOT NULL    |
 | integer  | string | NOT NULL    |
-| comment  | string | NOT NULL    |
 | integer  | string | NOT NULL    |
 | integer  | string | NOT NULL    |
 | integer  | string | NOT NULL    |
@@ -38,7 +45,7 @@
 ###   Association
 
 - belongs_to :user
-- belongs_to :buy
+- has_may :buy
 
 
 
@@ -53,9 +60,9 @@
 
 ###   Association
 
-
 - belongs_to :user
 - belongs_to :Street address
+- belongs_to :Product information
 
 
 
@@ -67,9 +74,8 @@
 | municipality   | string | NOT NULL    |
 | address        | string | NOT NULL    |
 | Building name  | string | --------    |
-| phone number   | references| NOT NULL | 
+| phone number   | string| NOT NULL | 
 
 ### Association
 
 - belongs_to :buys
-- belongs_to :user
