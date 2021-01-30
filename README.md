@@ -32,7 +32,7 @@
 | price                         | integer | NOT NULL   |
 | informaion                    | text    | NOT NULL   |
 | category_id                   | integer | NOT NULL   |
-| burden_of_shipping charges_id | integer | NOT NULL   |
+| burden_of_shipping_charges_id | integer | NOT NULL   |
 | shipping_area_id              | integer | NOT NULL   |
 | Estimated_shipping_id         | integer | NOT NULL   |
 | product_condition_id          |integer  | NOT NULL   |
@@ -63,7 +63,7 @@
 
 
 
-##  Street address テーブル　#住所
+##  Street_address テーブル #住所
 | Column  | Type       |             Options            |
 | -----ーーーーーーー|----------ーーーーーーー | -------------------------------|
 | post             | string  | NOT NULL   |
