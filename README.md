@@ -17,8 +17,8 @@
 
 ###   Association
 
-- has_may   :product_informations
-- has_one    :buys
+- has_many   :product_informations
+- has_many    :buys
 
 
 
@@ -32,17 +32,17 @@
 | price                         | integer | NOT NULL   |
 | informaion                    | text    | NOT NULL   |
 | category_id                   | integer | NOT NULL   |
-| burden of shipping charges_id | integer | NOT NULL   |
-| shipping area_id              | integer | NOT NULL   |
-| Estimated shipping_id         | integer | NOT NULL   |
-| product condition_id          |integer  | NOT NULL   |
+| burden_of_shipping charges_id | integer | NOT NULL   |
+| shipping_area_id              | integer | NOT NULL   |
+| Estimated_shipping_id         | integer | NOT NULL   |
+| product_condition_id          |integer  | NOT NULL   |
 | user                          | references|foreign_key: true|
 
 
 ###   Association
 
 - belongs_to :user
-- has_may :buy
+- has_one :buy
 
 
 
