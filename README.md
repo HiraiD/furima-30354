@@ -7,14 +7,9 @@
 | Column    | Type   | Options     |
 | --------  | ------ | ----------- |
 | last_name | string | NOT NULL    |
-| last_name |  string | NOT NULL   |
-| last_name kana | string | NOT NULL   |
-| last_name kana|  string | NOT NULL   |
-
-
-
-
-
+| first_name |  string | NOT NULL   |
+| last_name_kana | string | NOT NULL   |
+| first_name_kana|  string | NOT NULL   |
 | nickname  |  string | NOT NULL   |
 | email     | string  | NOT NULL   |
 | date      | date | NOT NULL    |
@@ -22,24 +17,26 @@
 
 ###   Association
 
-- has_many   :Product information
-- has_may    :buy
-- has_one    :Street address
+- has_many   :product_informations
+- has_may    :buys
 
 
 
 
-##  Product information テーブル　#商品情報
 
-|        Column    | Type   | Options     |
-| ---------------  | ------ | ----------- |
-| Seller   | string | NOT NULL    |
-| integer  | string | NOT NULL    |
-| integer  | string | NOT NULL    |
-| integer  | string | NOT NULL    |
-| integer  | string | NOT NULL    |
-| integer  | string | NOT NULL    |
+##  product_informations テーブル　#商品情報
 
+|        Column               | Type         | Options     |
+| -------------------- -------| ------ ----------|---------|
+| name                           | string | NOT NULL   |
+| price                         | integer | NOT NULL   |
+| informaion                    | text    | NOT NULL   |
+| category_id                   | integer | NOT NULL   |
+| burden of shipping charges_id | string | NOT NULL    |
+| shipping area_id              | string | NOT NULL    |
+| Estimated shipping_id         | string | NOT NULL    |
+| product condition_id          |string_ | NOT NULL    |
+| user_id                       | references|foreign_key: true|
 
 
 ###   Association
@@ -55,14 +52,14 @@
 ##          buys テーブル
 | Column  | Type       |             Options            |
 | -----   | ----------------------------------------｜ 
-｜user  | references | null: false, foreign_key: true |
-｜Product information| references | null: false, foreign_key: true |
+｜user_id  | references | null: false, foreign_key: true |
+｜product_information_id| references | null: false, foreign_key: true |
 
 ###   Association
 
 - belongs_to :user
-- belongs_to :Street address
-- belongs_to :Product information
+- has_one :street_address
+- belongs_to :product_information
 
 
 
@@ -70,11 +67,12 @@
 | Column  | Type       |             Options            |
 | -----   | ---------- | -------------------------------|
 | post    | string | NOT NULL    |
-| prefectures    | string | NOT NULL    |
-| municipality   | string | NOT NULL    |
-| address        | string | NOT NULL    |
-| Building name  | string | --------    |
-| phone number   | string| NOT NULL | 
+| prefecture_id    | integer | NOT NULL    |
+| municipality     | string | NOT NULL    |
+| address           | string | NOT NULL    |
+| building_name    | string | --------    |
+| phone_number   | string| NOT NULL | 
+| buy_id | references | foreign_key: true |
 
 ### Association
 
