@@ -72,18 +72,40 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Last name kana can't be blank")
       end
 
+      it "last_name_kanaが半角英数の場合は登録できないこと" do
+        @user.last_name_kana = "aaa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name kana can't be blank")
+      end
+
+      it "last_name_kanaが全角の場合は登録できないこと" do
+        @user.last_name_kana = "テスト"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name kana can't be blank")
+      end
+
       it "first_nameがない場合は登録できないこと" do
         @user.first_name = ""
         @user.valid?
         expect(@user.errors.full_messages).to include("First name can't be blank")
       end
 
-      it "first_name_kanaがない場合は登録できないこと" do
-        @user.first_name_kana = ""
+      it "first_name_kanaが半角英数の場合は登録できないこと" do
+        @user.first_name_kana = "aaa"
         @user.valid?
         expect(@user.errors.full_messages).to include("First name kana can't be blank")
       end
 
+      t "first_name_kanaが全角の場合は登録できないこと" do
+        @user.first_name_kana = "テスト"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name kana can't be blank")
+      end
+      
+      
+      
+      
+      
       it "birth_dateがない場合は登録できないこと" do
         @user.birth_date = ""
         @user.valid?
