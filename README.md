@@ -12,19 +12,19 @@
 | first_name_kana | string | NOT NULL    |
 | nickname        | string | NOT NULL    |
 | email           | string | NOT NULL    |
-| date            | date    | NOT NULL   |
+| birth_date            | date    | NOT NULL   |
 | encrypted_password  | string  | NOT NULL   | 
 
 ###   Association
 
-- has_many   :product_informations
+- has_many   :items
 - has_many    :buys
 
 
 
 
 
-##  product_informations テーブル　#商品情報
+## items テーブル　#商品情報
 
 |        Column               | Type     | Options     |
 | -------------------- -------| ------ー--|---------ーー|
@@ -59,7 +59,7 @@
 
 - belongs_to :user
 - has_one :street_address
-- belongs_to :product_information
+- belongs_to :items
 
 
 
