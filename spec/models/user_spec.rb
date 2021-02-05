@@ -11,7 +11,7 @@ RSpec.describe User, type: :model do
       expect(@user).to be_valid
       end
 
-      it "数字のみ(6文字以上)では登録できないこと" do
+      it "passwordは数字のみ(6文字以上)では登録できないこと" do
         @user.password = "123456"
         @user.password_confirmation = "123456"
         @user.valid?
