@@ -127,8 +127,23 @@ RSpec.describe User, type: :model do
       end
       
       
+      it "first_nameが半角英数字だったときに保存ができない" do
+        @user.first_name = "aa11"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name 全角文字を使用してください")
+      end
+   
+      it "last_nameが半角英数字だったときに保存ができない" do
+        @user.last_name = "a11"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name 全角文字を使用してください")
+      end
       
       
+      #last_nameが半角英数字だったときに保存ができないテストをしましょう！
+      #@user.last_nameに半角英数字の値を代入しましょう！
+      #バリデーションをチェックしましょう！
+      #期待されるメッセージを書きましょう！
       
       it "birth_dateがない場合は登録できないこと" do
         @user.birth_date = ""
