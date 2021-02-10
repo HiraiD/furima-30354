@@ -28,7 +28,7 @@
 
 |        Column               | Type     | Options     |
 | -------------------- -------| ------ー--|---------ーー|
-| name                           | string | NOT NULL   |
+| name                          | string |  NOT NULL  　|
 | price                         | integer | NOT NULL   |
 | informaion                    | text    | NOT NULL   |
 | category_id                   | integer | NOT NULL   |
