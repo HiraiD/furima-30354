@@ -53,5 +53,43 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Product condition can't be blank")
     end
+  
+    it "出品価格が299円以下では登録できないことないと登録できないこと" do
+      @item.product_condition_id = "299円"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Product condition is not a number")
+    end
+  
+    it "出品価格が10,000,000円以上では登録できないことないと登録できないこと" do
+      @item.product_condition_id = "10,000,000円"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Product condition is not a number")
+    end
+
+    it "全角文字では登録できないこと" do
+      @item.product_condition_id = "あああああ"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Product condition is not a number")
+    end
+    
+    it "全半角英数混合では登録できないこと" do
+      @item.product_condition_id = "aaAAああ１１11"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Product condition is not a number")
+    end
+
+    it "半角英語だけでは登録できないこと" do
+      @item.product_condition_id = "aaabbcc"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Product condition is not a number")
+    end
+
+    it "空では登録できないこと" do
+      @item.product_condition_id = ""
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Product condition is not a number")
+    end
+
+
   end
 end
