@@ -9,6 +9,7 @@ class Item < ApplicationRecord
     validates :shipping_area_id
     validates :estimated_shipping_id
     validates :product_condition_id
+    validates :price
   end
     
     with_options numericality: { other_than: 1 } do
@@ -19,7 +20,7 @@ class Item < ApplicationRecord
       validates :product_condition_id
     end
 
-  validates_inclusion_of:price,in:300..99999999, message: '¥300円から¥9,9999,9999の範囲でお願いいたします。'
+  validates_inclusion_of :price,in:300..9999999, message: '¥300円から¥9,999,999の範囲でお願いいたします。'
   validates :price, numericality: {with:/\A[0-9]+\z/, message: '販売価格は半角数字で記載をお願いいたします。'}
   belongs_to :user
   #has_one :buy
