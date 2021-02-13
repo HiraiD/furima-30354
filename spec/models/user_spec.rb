@@ -7,8 +7,9 @@ RSpec.describe User, type: :model do
   end
 
     describe 'ユーザー新規登録' do
+      
       it "nameとemail、passwordとpassword_confirmationが存在すれば登録できること" do
-      expect(@user).to be_valid
+        expect(@user).to be_valid
       end
 
       it "passwordは数字のみ(6文字以上)では登録できないこと" do

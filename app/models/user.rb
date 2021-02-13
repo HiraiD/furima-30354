@@ -24,6 +24,6 @@ class User < ApplicationRecord
          validates :first_name
        end
   
-
+  has_many :items
 
 end
