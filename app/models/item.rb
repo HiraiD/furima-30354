@@ -24,5 +24,10 @@ class Item < ApplicationRecord
   validates :price, numericality: {with:/\A[0-9]+\z/, message: '販売価格は半角数字で記載をお願いいたします。'}
   belongs_to :user
   #has_one :buy
- 
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :burden_of_shipping_charges
+  belongs_to :shipping_area
+  belongs_to :product_condition
+  belongs_to :estimated_shipping
+  belongs_to :category
 end
