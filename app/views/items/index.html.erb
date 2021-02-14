@@ -124,10 +124,8 @@
   <div class='item-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
     <%= link_to "新規投稿商品", :new_item, class: "subtitle" %>
-    <%# @item.each do |item| %>
     <ul class='item-lists'>
           <% @items.each do |item| %>
-      <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
       <li class='list'>
         <%= link_to "#" do %>
         <div class='item-img-content'>
@@ -146,7 +144,7 @@
             <%= item.name %>
           </h3>
           <div class='item-price'>
-            <span><%= item.price %>円<br><%= '配送料負担' %></span>
+            <span><%= item.price %>円<br><%= 'burdenof-shipping-charges' %></span>
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
               <span class='star-count'>0</span>
@@ -156,7 +154,7 @@
         <% end %>
          <% end %>
       </li>
-      <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
+      
 
       <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
        <%# <%= image_tag "item.smpl.image", class: "item-img" %> 
