@@ -123,7 +123,7 @@
   <%# 商品一覧 %>
   <div class='item-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
-    <%= link_to "新規投稿商品", :new_item, class: "subtitle" %>
+    <%= link_to "新規投稿商品", new_item_path, class: "subtitle" %>
     <ul class='item-lists'>
           <% @items.each do |item| %>
       <li class='list'>
@@ -144,7 +144,7 @@
             <%= item.name %>
           </h3>
           <div class='item-price'>
-            <span><%= item.price %>円<br><%= 'burdenof-shipping-charges' %></span>
+            <span><%= item.price %>円<br><%= item.burden_of_shipping_charges.name %></span>
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
               <span class='star-count'>0</span>
@@ -154,12 +154,6 @@
         <% end %>
          <% end %>
       </li>
-      
-
-      <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
-       <%# <%= image_tag "item.smpl.image", class: "item-img" %> 
-    <%# @itemsの中身があるかどうかで判断 %>
-      <%# 商品がある場合は表示されないようにしましょう %>
      <%if  @items[0] == nil %> 
       <li class='list'>
         <%= link_to '#' do %>
