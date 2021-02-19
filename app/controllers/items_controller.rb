@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user! , except: [:index,:show]
   before_action :set_item, only: [:update,:show,:edit]
-  # before_action :authenticate_user!
+  before_action :move_to_index, only: [:edit,:update]
   
   def index
     @items = Item.includes(:user).order("created_at DESC")
@@ -11,16 +11,16 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
-   def edit
-    @item = Item.find(params[:id])
-    if current_user.id != @item.user_id
-      redirect_to root_path
-    end
-    #return redirect_to root_path if current_user.id != @item.user.id  
+  def edit
   end
+   #残す目的  
+   #上記のeditの記述でもいいとおもいますが、if文の記述だとコードが 長くなっていること
+   # 何らかの理由ですり抜けて通ってしまうことがあり下記の記述することで今の記述よりも強い記述とメンターさんが
+   # 言ってことや教えてもらったので残しておきたいです。
+  #return redirect_to root_path if current_user.id != @item.user.id  
+ 
 
   def show
-    @item = Item.find(params[:id])
   end
 
   def update
@@ -52,7 +52,7 @@ class ItemsController < ApplicationController
 
 
 def move_to_index
-  unless user_signed_in?
+  unless current_user.id == @item.user_id
     redirect_to action: :index
   end
 end
