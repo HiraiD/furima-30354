@@ -10,6 +10,7 @@ class Item < ApplicationRecord
     validates :estimated_shipping_id
     validates :product_condition_id
     validates :price
+    validates :image
   end
     
     with_options numericality: { other_than: 1 } do
