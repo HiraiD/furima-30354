@@ -57,8 +57,11 @@ group :development do
   gem 'rubocop', require: false
 end
 
-gem 'active_hash'
+group :development do
+  gem 'rubocop', require: false
+end
 
+gem 'active_hash'
 gem 'devise'
 gem 'pry-rails'
 gem 'rspec-rails', '~> 4.0.0'
