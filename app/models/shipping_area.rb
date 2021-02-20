@@ -1,6 +1,6 @@
 class ShippingArea < ActiveHash::Base
   self.data = [
-    { id: 1, name: '--' }, 
+    { id: 1, name: '--' },
     { id: 2, name: '北海道' },
     { id: 3, name: '青森県' },
     { id: 4, name: '岩手県' },
@@ -26,7 +26,7 @@ class ShippingArea < ActiveHash::Base
     { id: 24, name: '愛知県' },
     { id: 25, name: '三重県' },
     { id: 26, name: '滋賀県' },
-    { id: 27, name: '京都府'} ,
+    { id: 27, name: '京都府' },
     { id: 28, name: '大阪府' },
     { id: 29, name: '兵庫県' },
     { id: 30, name: '奈良県' },
@@ -49,25 +49,4 @@ class ShippingArea < ActiveHash::Base
     { id: 47, name: '鹿児島県' },
     { id: 48, name: '沖縄県' }
   ]
-  end
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+end
