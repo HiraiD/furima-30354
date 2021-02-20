@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user! , except: [:index,:show]
-  before_action :set_item, only: [:update,:show,:edit,:destroy]
-  before_action :move_to_index, only: [:edit,:update]
+  before_action :set_item, only: [:update,:show,:edit]
+  before_action :move_to_index, only: [:edit,:update,]
   
   def index
     @items = Item.includes(:user).order("created_at DESC")
@@ -20,23 +20,28 @@ class ItemsController < ApplicationController
   #return redirect_to root_path if current_user.id != @item.user.id  
  
 
-  def show
-  end
-
-  def update
-    if @item.update(item_params)
-            redirect_to item_path
-      else
-        render :edit
+    def show
     end
-  end
 
-   def destroy
-     @item = Item.destroy
-   end
+    def update
+    if @item.update(item_params)
+       redirect_to item_path
+      else
+      render :edit
+      end
+    end
+  
+    def destroy
+     @item = Item.find(params[:id])
+     @item.destroy
+     redirect_to root_path
+     end
+   
+   
+  
 
   def create
-    @item = Item.new(item_params)
+      @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
       else
@@ -47,19 +52,18 @@ class ItemsController < ApplicationController
   private
 
   def item_params
+    bining.pry 
     params.require(:item).permit(:name,:informaion,:category_id,:burden_of_shipping_charges_id,:shipping_area_id,:estimated_shipping_id,:image,:product_condition_id,:price).merge(user_id: current_user.id)
   end
 
 
-def move_to_index
-  unless current_user.id == @item.user_id
-    redirect_to action: :index
+  def move_to_index
+   unless current_user.id == @item.user_id
+      redirect_to action: :index
+    end
   end
-end
 
-def set_item
-  @item = Item.find(params[:id])
-end
-
-
+  def set_item
+    @item = Item.find(params[:id])
+  end
 end
