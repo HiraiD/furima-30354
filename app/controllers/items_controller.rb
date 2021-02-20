@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user! , except: [:index,:show]
-  before_action :set_item, only: [:update,:show,:edit]
+  before_action :set_item, only: [:update,:show,:edit,:destroy]
   before_action :move_to_index, only: [:edit,:update]
   
   def index
@@ -31,9 +31,9 @@ class ItemsController < ApplicationController
     end
   end
 
-  # def destroy
-  #   @item = Item.destroy
-  # end
+   def destroy
+     @item = Item.destroy
+   end
 
   def create
     @item = Item.new(item_params)
