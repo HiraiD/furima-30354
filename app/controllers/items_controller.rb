@@ -48,7 +48,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    bining.pry
     params.require(:item).permit(:name, :informaion, :category_id, :burden_of_shipping_charges_id, :shipping_area_id,
                                  :estimated_shipping_id, :image, :product_condition_id, :price).merge(user_id: current_user.id)
   end
