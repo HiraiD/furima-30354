@@ -50,10 +50,10 @@
 
 
 ##          buys テーブル
-| Column               | Type    |             Options            |
-| -----ーーーーーーーーー| ----------------------------------------｜ 
-｜user               | references | null: false, foreign_key:true  |
-｜product_information| references | null: false, foreign_key: true |
+| Column               | Type    |      Options         |
+---------------------- ｜ --------|--------------------|
+｜user               | references |  foreign_key:true  |
+｜item               | references |  foreign_key: true |
 
 ###   Association
 
@@ -77,3 +77,6 @@
 ### Association
 
 - belongs_to :buy
+
+
+## 
