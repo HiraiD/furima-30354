@@ -70,7 +70,7 @@
 | prefecture_id    | integer | NOT NULL   |
 | municipality     | string | NOT NULL    |
 | address          | string | NOT NULL    |
-| building_name    | string | --------    |
+| address     | string | --------    |
 | phone_number     | string| NOT NULL     | 
 | buy               | references          | foreign_key: true    |
 
