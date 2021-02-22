@@ -11,15 +11,6 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.integer   :estimated_shipping_id,          null: false
       t.integer   :product_condition_id,           null: false
       t.references   :user,                        foreign_key: true
-      
-    
-    
-    
-    
-    
-    
-    
-    
       t.timestamps
     end
   end
