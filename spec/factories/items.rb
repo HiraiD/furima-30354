@@ -10,5 +10,9 @@ FactoryBot.define do
     price                             { '300' }
     # user                              {'田中'}
     association :user
+
+    after(:build) do |message|
+      message.image.attach(io: File.open('spec/fixtures/sample.png'), filename: 'sample.png')
+    end
   end
 end
