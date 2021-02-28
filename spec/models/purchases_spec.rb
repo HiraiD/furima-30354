@@ -22,7 +22,11 @@ RSpec.describe Purchase, type: :model do
      
       it '携帯番号と電話番号は11桁以内で記載されていないと登録できこと' do
         @purchase.phone_number = '09012345678'
-     
+        @purchase.valid?
+        expect(@purchase).to be_valid
+      end
+      it '建物名が空でも登録できこと' do
+        @purchase.building_name  = ''
         @purchase.valid?
         expect(@purchase).to be_valid
       end
@@ -42,6 +46,12 @@ RSpec.describe Purchase, type: :model do
         expect(@purchase.errors.full_messages).to include("Shipping area can't be blank")
       end
   
+      it '配送の選択肢が１だと登録できないこと' do
+        @purchase.shipping_area_id = ''
+        @purchase.valid?
+        expect(@purchase.errors.full_messages).to include("Shipping area can't be blank")
+      end
+     
       it '市町村の記載されていないと登録できないこと' do
         @purchase.municipality = ''
         @purchase.valid?
