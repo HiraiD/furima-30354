@@ -1,18 +1,24 @@
 class BuysController < ApplicationController
-  def index
-    @item = Item.find(params[:item_id])
+  before_action :authenticate_user!, except: [:create]
+    def index
+      @item = Item.find(params[:item_id])
+      if current_user.id == @item.user_id
+       #ログインしているユーザー　＝＝　商品を出品した人(何を記述しているのか記載)
+
     @user_purchase = Purchase.new
+    redirect_to root_path
+  else
+    render action: :index
+    end
   end
 
-  def create
+  
+def creates
     @item = Item.find(params[:item_id])
     pay_item
     @user_purchase = Purchase.new(purchase_params)
-    if @user_purchase.valid?
-
       # binding.pry
-
-      @user_purchase.save
+      if@item_purchase.save
       # Buy.create(buy_params(user))
       # StreetAddre.create(street_addre_params(user))
       redirect_to root_path
