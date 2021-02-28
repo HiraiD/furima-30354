@@ -1,70 +1,50 @@
 class BuysController < ApplicationController
-  
   def index
     @item = Item.find(params[:item_id])
     @user_purchase = Purchase.new
   end
 
-
   def create
-    @item = Item.find(params[:item_id])   
+    @item = Item.find(params[:item_id])
     pay_item
     @user_purchase = Purchase.new(purchase_params)
-    if@user_purchase.valid?
-    
-    #binding.pry
-   
+    if @user_purchase.valid?
+
+      # binding.pry
+
       @user_purchase.save
-    #Buy.create(buy_params(user))
-    #StreetAddre.create(street_addre_params(user))
-    redirect_to root_path
+      # Buy.create(buy_params(user))
+      # StreetAddre.create(street_addre_params(user))
+      redirect_to root_path
     else
-    render action: :index
+      render action: :index
     end
   end
 
-  private 
+  private
+
   # 全てのストロングパラメーターを1つに統合 何がどようになっているのか記載を残したいです。
   def purchase_params
-    params.require(:purchase).permit(:post,:shipping_area_id,:municipality,:address,:building_name,:phone_number,:pirce).merge(user_id: current_user.id ,item_id:params[:item_id],token: params[:token])
+    params.require(:purchase).permit(:post, :shipping_area_id, :municipality, :address, :building_name, :phone_number, :pirce).merge(
+      user_id: current_user.id, item_id: params[:item_id], token: params[:token]
+    )
   end
 end
 
 def pay_item
-  Payjp.api_key = "sk_test_0a13d9a08559b03b92a6abc7"  # 自身のPAY.JPテスト秘密鍵を記述しましょう
+  Payjp.api_key = 'sk_test_0a13d9a08559b03b92a6abc7' # 自身のPAY.JPテスト秘密鍵を記述しましょう
   Payjp::Charge.create(
-    amount:@item.price,  # 商品の値段
-    card: purchase_params[:token],    # カードトークン
-    currency: 'jpy'                 # 通貨の種類（日本円）
+    amount: @item.price, # 商品の値段
+    card: purchase_params[:token], # カードトークン
+    currency: 'jpy' # 通貨の種類（日本円）
   )
 end
 
-
-
-
-#def set_item
- # @item = Item.find(params[:item_id])
-#end
-
+# def set_item
+# @item = Item.find(params[:item_id])
+# end
 
 # ①ストロングパラメータでフォームからの情報を受け取る。
 # ②ストロングパラメータで受け取った情報を元に、form_objectのインスタンスを作る。
 # ③作ったインスタンスがバリデーションを通過できるか検証をする。
 # ④作ったインスタンスをsaveする。（フォームオブジェクト内に定義したsaveメソッドを使用）
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
