@@ -8,10 +8,10 @@ const pay = () => {
     const formData = new FormData(formResult);
 
     const card = {
-       number: formData.get("purchase[number]"),
-        cvc: formData.get("purchase[cvc]"),
+      number: formData.get("purchase[number]"),
+      cvc: formData.get("purchase[cvc]"),
       exp_month: formData.get("purchase[exp_month]"),
-       exp_year: `20${formData.get("purchase[exp_year]")}`,
+      exp_year: `20${formData.get("purchase[exp_year]")}`,
     };
     
     Payjp.createToken(card, (status, response) => {
@@ -21,14 +21,14 @@ const pay = () => {
         const tokenObj = `<input value=${token} name='token' type="hidden"> `;
         renderDom.insertAdjacentHTML("beforeend", tokenObj);
       }
-       document.getElementById("card-number").removeAttribute("number");
-       document.getElementById("card-cvc").removeAttribute("cvc");
-       document.getElementById("card-exp-month").removeAttribute("exp_month");
-      document.getElementById("card-exp-year").removeAttribute("exp_year");
+        document.getElementById("card-number").removeAttribute("number");
+        document.getElementById("card-cvc").removeAttribute("cvc");
+        document.getElementById("card-exp-month").removeAttribute("exp_month");
+        document.getElementById("card-exp-year").removeAttribute("exp_year");
   
-      document.getElementById("charge-form").submit();
+        document.getElementById("charge-form").submit();
+      });
     });
-  });
-};
+  };
 
-window.addEventListener("load", pay);
+        window.addEventListener("load", pay);

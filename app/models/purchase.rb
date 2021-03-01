@@ -12,7 +12,7 @@ class Purchase
     validates :address
     validates :phone_number, length: { maximum: 11, message: 'Too long' }
     validates :phone_number, numericality: { only_integer: true }
-    validates :token, presence: true
+    validates :token
   end
 
   def save
