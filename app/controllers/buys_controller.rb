@@ -1,7 +1,7 @@
 class BuysController < ApplicationController
   before_action :authenticate_user!, only: [:create, :index]
   before_action :con_item, only: [:index, :create]
-  before_action :app_item, only: [:index, :creates]
+  before_action :app_item, only: [:index, :create]
 
   def index
     @user_purchase = Purchase.new
@@ -16,12 +16,12 @@ class BuysController < ApplicationController
   def create
     pay_item
     @user_purchase = Purchase.new(purchase_params)
-    if @item_purchase.save
-      # Buy.create(buy_params(user))
-      # StreetAddre.create(street_addre_params(user))
-      redirect_to root_path
-    else
-      render action: :index
+    if @item_purchase.valid?
+      if current_user.id == @item.user_id
+        redirect_to root_path
+      else
+        render action: :index
+      end
     end
   end
 
@@ -44,7 +44,7 @@ class BuysController < ApplicationController
   end
 
   def app_item
-    redirect_to root_path if !@item.buy.nil? && current_user
+    redirect_to root_path unless @item.buy.nil?
     # しょうひんが売れていたらという条件式を書く。show.html.erbのSoldOutで使われているぶぶんを参考にする。
   end
 
