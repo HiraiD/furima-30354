@@ -12,6 +12,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    return redirect_to root_path if current_user.id != @item.user.id
   end
   # 残す目的
   # 上記のeditの記述でもいいとおもいますが、if文の記述だとコードが 長くなっていること
