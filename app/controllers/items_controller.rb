@@ -12,12 +12,8 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    return redirect_to root_path if current_user.id != @item.user.id || !@item.buy.nil?
   end
-  # 残す目的
-  # 上記のeditの記述でもいいとおもいますが、if文の記述だとコードが 長くなっていること
-  # 何らかの理由ですり抜けて通ってしまうことがあり下記の記述することで今の記述よりも強い記述とメンターさんが
-  # 言ってことや教えてもらったので残しておきたいです。
-  # return redirect_to root_path if current_user.id != @item.user.id
 
   def show
   end

@@ -24,7 +24,7 @@ class Item < ApplicationRecord
   validates_inclusion_of :price, in: 300..9_999_999, message: '¥300円から¥9,999,999の範囲でお願いいたします。'
   validates :price, numericality: { with: /\A[0-9]+\z/, message: '販売価格は半角数字で記載をお願いいたします。' }
   belongs_to :user
-  # has_one :buy
+  has_one :buy
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :burden_of_shipping_charges
   belongs_to :shipping_area

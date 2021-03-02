@@ -45,21 +45,18 @@
 - has_one :buy
 
 
-
-
-
-
 ##          buys テーブル
-| Column               | Type    |             Options            |
-| -----ーーーーーーーーー| ----------------------------------------｜ 
-｜user               | references | null: false, foreign_key:true  |
-｜product_information| references | null: false, foreign_key: true |
+| Column               | Type    |      Options         |
+---------------------- ｜ --------|--------------------|
+｜user               | references |  foreign_key:true  |
+｜item               | references |  foreign_key: true |
 
 ###   Association
 
-- belongs_to :user
+ - belongs_to :user
 - has_one :street_address
 - belongs_to :items
+- 
 
 
 
@@ -70,10 +67,13 @@
 | prefecture_id    | integer | NOT NULL   |
 | municipality     | string | NOT NULL    |
 | address          | string | NOT NULL    |
-| building_name    | string | --------    |
+| building_name     | string | --------    |
 | phone_number     | string| NOT NULL     | 
 | buy               | references          | foreign_key: true    |
 
 ### Association
 
 - belongs_to :buy
+
+
+## 
