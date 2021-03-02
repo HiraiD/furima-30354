@@ -45,7 +45,7 @@ RSpec.describe Purchase, type: :model do
       end
 
       it '配送の選択肢が１だと購入できない' do
-        @purchase.shipping_area_id = '1'
+        @purchase.shipping_area_id = 1
         @purchase.valid?
         expect(@purchase.errors.full_messages).to include('Shipping area must be other than 1')
       end
@@ -65,7 +65,7 @@ RSpec.describe Purchase, type: :model do
       it '携帯番号の記載がないと購入できない' do
         @purchase.phone_number = ''
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include("Phone number can't be blank")
+        expect(@purchase.errors.full_messages).to include("Phone number is not a number")
       end
 
       it '携帯番号と電話番号は11桁以内でハイフン（ー)があると購入できない' do

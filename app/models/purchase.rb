@@ -9,10 +9,11 @@ class Purchase
     validates :shipping_area_id, numericality: { other_than: 1 }
     validates :municipality
     validates :address
-    validates :phone_number, length: { maximum: 11, message: 'Too long' }
-    validates :phone_number, numericality: { only_integer: true }
     validates :token
   end
+
+  validates :phone_number, length: { maximum: 11, message: 'Too long' }
+  validates :phone_number, numericality: { only_integer: true }
 
   def save
     buy = Buy.create(user_id: user_id, item_id: item_id)
