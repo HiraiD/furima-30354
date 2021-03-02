@@ -14,16 +14,14 @@ class BuysController < ApplicationController
   end
 
   def create
-    pay_item
     @user_purchase = Purchase.new(purchase_params)
-    if @item_purchase.valid?
-      if current_user.id == @item.user_id
+    if @user_purchase.valid?
+      pay_item 
+       @user_purchase.save
         redirect_to root_path
-      else
-        render action: :index
-      end
+       end
     end
-  end
+
 
   private
 
@@ -35,7 +33,7 @@ class BuysController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = 'sk_test_0a13d9a08559b03b92a6abc7' # 自身のPAY.JPテスト秘密鍵を記述しましょう
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]  # 自身のPAY.JPテスト秘密鍵を記述しましょう
     Payjp::Charge.create(
       amount: @item.price, # 商品の値段
       card: purchase_params[:token], # カードトークン
@@ -45,7 +43,6 @@ class BuysController < ApplicationController
 
   def app_item
     redirect_to root_path unless @item.buy.nil?
-    # しょうひんが売れていたらという条件式を書く。show.html.erbのSoldOutで使われているぶぶんを参考にする。
   end
 
   # ＠itemを定義するメソッドを作成
