@@ -112,5 +112,3 @@ RSpec.describe Purchase, type: :model do
     end
   end
 end
-
-# #bundle exec rspec spec/models/purchases_spec.rb(テスト)

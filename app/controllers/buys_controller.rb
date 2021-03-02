@@ -6,7 +6,7 @@ class BuysController < ApplicationController
   def index
     @user_purchase = Purchase.new
     if current_user.id == @item.user_id
-      # ログインしているユーザー　＝＝　商品を出品した人(何を記述しているのか記載)
+
       redirect_to root_path
     else
       render action: :index
@@ -44,7 +44,6 @@ class BuysController < ApplicationController
     redirect_to root_path unless @item.buy.nil?
   end
 
-  # ＠itemを定義するメソッドを作成
   def con_item
     @item = Item.find(params[:item_id])
   end

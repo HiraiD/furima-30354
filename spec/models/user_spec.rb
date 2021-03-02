@@ -33,7 +33,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'nicknameが空だと登録できない' do
-      @user.nickname = '' # nicknameの値を空にする
+      @user.nickname = ''
       @user.valid?
       expect(@user.errors.full_messages).to include("Nickname can't be blank")
     end
@@ -135,11 +135,6 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include('Last name 全角文字を使用してください')
     end
-
-    # last_nameが半角英数字だったときに保存ができないテストをしましょう！
-    # @user.last_nameに半角英数字の値を代入しましょう！
-    # バリデーションをチェックしましょう！
-    # 期待されるメッセージを書きましょう！
 
     it 'birth_dateがない場合は登録できないこと' do
       @user.birth_date = ''

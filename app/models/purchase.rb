@@ -2,7 +2,6 @@ class Purchase
   include ActiveModel::Model
   attr_accessor :user_id, :item_id, :post, :shipping_area_id, :municipality, :address, :building_name, :phone_number, :token
 
-  # ここにバリデーションの処理を書く
   with_options presence: true do
     validates :user_id
     validates :item_id
@@ -16,9 +15,7 @@ class Purchase
   end
 
   def save
-    # 各テーブルにデータを保存する処理を書く
     buy = Buy.create(user_id: user_id, item_id: item_id)
-
     StreetAddress.create(post: post, shipping_area_id: shipping_area_id, municipality: municipality, address: address,
                          building_name: building_name, phone_number: phone_number, buy_id: buy.id)
   end
