@@ -19,6 +19,8 @@ class BuysController < ApplicationController
       pay_item
       @user_purchase.save
       redirect_to root_path
+    else
+      render action: :index
     end
   end
 
